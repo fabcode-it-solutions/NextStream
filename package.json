@@ -55,7 +55,7 @@
     "types:esm": "tsc --outDir dist",
     "types:cjs": "tsc --outDir dist/cjs",
     "prebuild": "npm run clean && npm run types",
-    "build": "node api.js && npm run build:esm && npm run build:cjs",
+    "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "esbuild \"src/**/*.ts*\" --outdir=dist --format=esm --target=es2020 --define:process.env.NODE_ENV=process.env.NODE_ENV",
     "build:cjs": "esbuild \"src/**/*.ts*\" --outdir=dist/cjs --platform=node --format=cjs --target=es2020 --define:import.meta.url=\\\"\\\"",
     "postbuild:cjs": "node --eval \"fs.writeFileSync('./dist/cjs/package.json', '{\\\"type\\\": \\\"commonjs\\\"}')\"",
